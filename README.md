@@ -7,7 +7,7 @@
     -'PORT=3000'
 - Inside 'src/config' folder create a new file 'config.json' and then add the following piece of json
 
-....
+...
 {
   "development": {
     "username": <Your database login name>,
@@ -17,4 +17,4 @@
     "dialect": "mysql"
   }
 }
-....
+...
