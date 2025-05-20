@@ -39,7 +39,7 @@ const destroy=async (req,res)=>{
         return res.status(500).json({
             data:{},
             success:false,
-            message: 'Failed to delet the city',
+            message: 'Failed to delete the city',
             err:error
         });
     }
@@ -49,7 +49,7 @@ const destroy=async (req,res)=>{
 const get=async (req,res)=>{
     try{
         const city= await cityService.getCity(req.params.id);
-        return res.status(201).json({
+        return res.status(200).json({
             data:city,
             success: true,
             message: 'Sucessfully fetched a city',

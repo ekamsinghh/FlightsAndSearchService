@@ -12,14 +12,14 @@ class CityRepository{
         }
     }
     
-    async deleteCity({ cityid }){
+    async deleteCity(cityid){
         try{
-            await City.destroy({
+            const response=await City.destroy({
                 where:{
                     id: cityid
                 }
             });
-            return true;
+            return response;
         }
         catch(err){
             console.log("Some error happened in repository layer.");
@@ -27,10 +27,14 @@ class CityRepository{
         }
     }
 
-    async getCity({ cityid }){
+    async getCity(cityid){
         try{
-            const city= await City.findByPk(cityid);//we could have used findAll or findOne with where clause but findByPk automatically goes for primary key
-            return city;
+            const response=await City.findOne({
+                where:{
+                    id: cityid
+                }
+            });
+            return response;
         }
         catch(err){
             console.log("Some error happened in repository layer.");
