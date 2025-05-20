@@ -11,7 +11,7 @@ const setupAndStartServer= async ()=>{
     app.listen(PORT,async ()=>{
         console.log(`Server is running on ${PORT}`);
         const repo= new CityRepository();
-        repo.deleteCity({cityid:2});
+        
     });
 };
 
