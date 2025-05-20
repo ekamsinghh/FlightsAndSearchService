@@ -18,7 +18,7 @@
   }
 }
 ...
-- Once you've done above listed steps, go to the src folder from terminal and execute 'npx sequelize db:create'
+- Once you've done above listed steps, go to the src folder from terminal and execute `npx sequelize db:create` an then execute `npx sequelize db:migrate` to create the database and migrate the schema
 
 ## DB Design
   - Airplane Table
