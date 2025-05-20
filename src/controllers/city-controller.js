@@ -10,7 +10,7 @@ const create=async (req,res)=>{
             success: true,
             message: 'Sucessfully created a city',
             err:{}
-        })
+        });
     }
     catch(error){
         console.log(error);
@@ -32,7 +32,7 @@ const destroy=async (req,res)=>{
             success: true,
             message: 'Sucessfully deleted a city',
             err:{}
-        })
+        });
     }
     catch(error){
         console.log(error);
@@ -54,7 +54,7 @@ const get=async (req,res)=>{
             success: true,
             message: 'Sucessfully fetched a city',
             err:{}
-        })
+        });
     }
     catch(error){
         console.log(error);
@@ -76,7 +76,7 @@ const update=async (req,res)=>{
             success: true,
             message: 'Sucessfully updated a city',
             err:{}
-        })
+        });
     }
     catch(error){
         console.log(error);
@@ -88,3 +88,10 @@ const update=async (req,res)=>{
         });
     }
 };
+
+module.exports={
+    create,
+    destroy,
+    get,
+    update
+}
