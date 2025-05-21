@@ -1,9 +1,9 @@
 const {City} = require("../models/index");
 const {Op}= require("sequelize");
 class CityRepository{
-    async createCity({ name }){// taking input like this is basically destructuring the object....it helps us to directly access the name without doing obj.name.
+    async createCity(cityarray){// taking input like this is basically destructuring the object....it helps us to directly access the name without doing obj.name.
         try{
-            const city= await City.create({name});
+            const city= await City.bulkCreate(cityarray);
             return city;
         }
         catch(err){

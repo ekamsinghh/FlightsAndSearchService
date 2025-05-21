@@ -2,7 +2,8 @@ const express=require("express");
 const {PORT}=require("./config/serverConfig");
 const CityRepository=require("./repository/city-repository");
 const ApiRoutes=require("./routes/index");
-
+const sequelize=require('sequelize');
+const db=require("./models/index");
 
 const setupAndStartServer= async ()=>{
     const app= express();
@@ -15,7 +16,9 @@ const setupAndStartServer= async ()=>{
 
     app.listen(PORT,async ()=>{
         console.log(`Server is running on ${PORT}`);
-        const repo= new CityRepository();
+        if(process.env.SYN_DB){
+            db.sequelize.sync({alter:true});// whenever there is a need to sync the db just go to the .env file and add the SYN_DB=true and after syncing just remove it if not needed anymore
+        }
         
     });
 };
