@@ -48,8 +48,19 @@ class CityRepository{
                 where:{
                     id:cityid
                 }
-            })
+            });
             return city;
+        }
+        catch(err){
+            console.log("Some error happened in repository layer.");
+            throw {err};
+        }
+    }
+
+    async getAll(){
+        try{
+            const cities= await City.findAll({});
+            return cities;
         }
         catch(err){
             console.log("Some error happened in repository layer.");
