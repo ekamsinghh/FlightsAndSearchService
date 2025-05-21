@@ -7,7 +7,7 @@
     -'PORT=3000'
 - Inside 'src/config' folder create a new file 'config.json' and then add the following piece of json
 
-...
+```
 {
   "development": {
     "username": <Your_database_login_name>,
@@ -17,7 +17,7 @@
     "dialect": "mysql"
   }
 }
-...
+```
 - Once you've done above listed steps, go to the src folder from terminal and execute `npx sequelize db:create` an then execute `npx sequelize db:migrate` to create the database and migrate the schema
 
 ## DB Design
