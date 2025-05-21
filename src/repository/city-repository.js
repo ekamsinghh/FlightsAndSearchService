@@ -1,5 +1,5 @@
 const {City} = require("../models/index");
-
+const {Op}= require("sequelize");
 class CityRepository{
     async createCity({ name }){// taking input like this is basically destructuring the object....it helps us to directly access the name without doing obj.name.
         try{
@@ -57,8 +57,18 @@ class CityRepository{
         }
     }
 
-    async getAll(){
+    async getAll(filter){
         try{
+            if(filter.name){
+                const cities= await City.findAll({
+                    where: {
+                        name: {
+                            [Op.like]: `${filter.name}%`
+                        }
+                    }
+                });
+                return cities;
+            }
             const cities= await City.findAll({});
             return cities;
         }

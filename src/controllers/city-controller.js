@@ -89,10 +89,10 @@ const update=async (req,res)=>{
     }
 };
 
-//get--> /city
+//get--> /city ==> might contains some query params
 const getAll=async (req,res)=>{
     try{
-        const cities= await cityService.getAll();
+        const cities= await cityService.getAll(req.query);
         return res.status(200).json({
             data:cities,
             success: true,
