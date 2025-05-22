@@ -1,10 +1,11 @@
 const {FlightService}=require("../services/index");
+const {SuccessCodes,ServerErrorCodes}=require('../utils/errors');
 
 const flightService=new FlightService();
 
 const create=async(req,res)=>{
     try{
-        let flightRequestData={
+        let flightRequestData={// it is used to ensure that request flightrequest has all the required dettails only
             flightNumber:req.body.flightNumber,
             airplaneId:req.body.airplaneId,
             departureAirportId:req.body.departureAirportId,
@@ -14,7 +15,7 @@ const create=async(req,res)=>{
             price:req.body.price
         }
         const flight = await flightService.createFlight(flightRequestData);
-        return res.status(201).json({
+        return res.status(SuccessCodes.CREATED).json({
             data: flight,
             success: true,
             message: 'Sucessfully created a flight',
@@ -35,7 +36,7 @@ const create=async(req,res)=>{
 const getAll=async(req,res)=>{
     try{
         const flights = await flightService.getAllFlightData(req.query);
-        return res.status(200).json({
+        return res.status(SuccessCodes.OK).json({
             data: flights,
             success: true,
             message: 'Sucessfully fetched the flights',
@@ -51,8 +52,6 @@ const getAll=async(req,res)=>{
             err:error
         });
     }
-
-    
 }
 
 module.exports={

@@ -1,3 +1,5 @@
+const {ClientErrorCodes}=require('../utils/errors');
+
 const validateCreateFlight=(req,res,next)=>{
     if(
         !req.body.flightNumber ||
@@ -8,7 +10,7 @@ const validateCreateFlight=(req,res,next)=>{
         !req.body.arrivalTime ||
         !req.body.price
     ){
-        return res.status(400).json({//* 400=> signifies Bad Request
+        return res.status(ClientErrorCodes.BAD_REQUEST).json({//* 400=> signifies Bad Request
             message:'All the required fields are not present',
             success:false,
             err:{}
